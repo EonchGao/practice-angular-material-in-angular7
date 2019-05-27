@@ -1,5 +1,5 @@
 <form action="">
-  <h2 mat-dialog-title>新建任务</h2>
+  <h3 mat-dialog-title>{{title}}</h3>
   <div mat-dialog-content>
     <mat-form-field class="full-width">
       <input matInput type="text" placeholder="任务内容">
@@ -20,7 +20,7 @@
     </mat-form-field>
     <mat-datepicker #reminderDatepicker></mat-datepicker>
   </div>
-  <div mat-dialog-actons>
+  <div mat-dialog-actions>
     <button type="button" mat-raised-button color="primary" (click)="'onClick()'">保存</button>
     <button type="button" mat-button mat-dialog-close>关闭</button>
   </div>

@@ -9,6 +9,10 @@ export class ProjectItemComponent implements OnInit {
   @Input() item: any;
 
   @Output() Inivate = new EventEmitter<void>();
+  @Output() Edit = new EventEmitter<void>();
+  @Output() Del = new EventEmitter<void>();
+
+
 
   constructor() { }
 
@@ -17,5 +21,10 @@ export class ProjectItemComponent implements OnInit {
   onInviateClick() {
     this.Inivate.emit();
   }
-
+  onEditClick() {
+    this.Edit.emit();
+  }
+  onDelClick() {
+    this.Del.emit();
+  }
 }

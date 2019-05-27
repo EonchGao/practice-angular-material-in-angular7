@@ -1,4 +1,5 @@
-<app-project-item *ngFor="let project of projects" [item]="project" class="card" (Inivate)="launchInviateDialog()">
+<app-project-item *ngFor="let project of projects" [item]="project" class="card" (Inivate)="launchInviateDialog()"
+  (Edit)="launchUpdateDialog()" (Del)="launchConfirmDialog()">
 </app-project-item>
 <button class="fab-button" mat-fab type="button" (click)="openNewProjectDialog()">
   <mat-icon>add</mat-icon>
