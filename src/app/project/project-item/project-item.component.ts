@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { cardAnim } from 'src/app/animation/card.anim';
 import { listAnimation } from 'src/app/animation/list.anim';
 
@@ -9,7 +18,9 @@ import { listAnimation } from 'src/app/animation/list.anim';
   animations: [
     cardAnim,
     listAnimation
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class ProjectItemComponent implements OnInit {
   @Input() item: any;
@@ -29,6 +40,7 @@ export class ProjectItemComponent implements OnInit {
   onMouseleave() {
     this.cardState = 'out';
   }
+
   constructor() { }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { NewTaskComponent } from '../new-task/new-task.component';
 import { CopyTaskComponent } from '../copy-task/copy-task.component';
@@ -12,10 +12,12 @@ import { slideToRight } from 'src/app/animation/router.anim';
   styleUrls: ['./task-home.component.scss'],
   animations: [
     slideToRight
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class TaskHomeComponent implements OnInit {
-  @HostBinding('@routerAnim') state;
+  @HostBinding('@routerAnim') state: any;
   lists = [
     {
       id: 1,
@@ -78,7 +80,8 @@ export class TaskHomeComponent implements OnInit {
     },
   ];
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
