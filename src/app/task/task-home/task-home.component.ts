@@ -107,4 +107,17 @@ export class TaskHomeComponent implements OnInit {
     const dialogRef = this.dialog.open(NewTaskListComponent, { data: { title: '新建列表', content: '确认删除该任务列表吗？' } });
     dialogRef.afterClosed().subscribe(result => console.log('result::', result));
   }
+
+  handleMove(srcData, list) {
+    switch (srcData.tag) {
+      case 'task-item':
+        console.log('handle item');
+        break;
+        case 'task-list':
+          console.log('handle list');
+          break;
+      default:
+        break;
+    }
+  }
 }

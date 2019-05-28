@@ -12,6 +12,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { loadSvgResources } from '../util/svg.util';
 import { AppRoutingModule } from '../app-routing.module';
 
+
 @NgModule({
   imports: [
     HttpClientModule,
