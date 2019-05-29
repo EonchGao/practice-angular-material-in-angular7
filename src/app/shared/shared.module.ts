@@ -22,9 +22,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent],
+  declarations: [ConfirmDialogComponent, ImageListSelectComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -47,6 +49,8 @@ import { DirectiveModule } from '../directive/directive.module';
     MatSelectModule,
     MatSidenavModule,
     DirectiveModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -70,6 +74,9 @@ import { DirectiveModule } from '../directive/directive.module';
     MatSelectModule,
     MatSidenavModule,
     DirectiveModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ImageListSelectComponent,
   ],
   entryComponents: [
     ConfirmDialogComponent

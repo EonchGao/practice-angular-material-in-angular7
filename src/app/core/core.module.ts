@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { loadSvgResources } from '../util/svg.util';
 import { AppRoutingModule } from '../app-routing.module';
+import { ServicesModule } from '../services/services.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { AppRoutingModule } from '../app-routing.module';
     SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    ServicesModule.forRoot(),
   ],
   declarations: [
     HeaderComponent,
@@ -32,7 +34,11 @@ import { AppRoutingModule } from '../app-routing.module';
     AppRoutingModule,
   ],
   providers: [
-    { provide: 'BASE_CONFIG', useValue: 'http://localhost:3000' }
+    {
+      provide: 'BASE_CONFIG', useValue: {
+        uri: 'http://localhost:3000'
+      }
+    }
   ]
 })
 
