@@ -13,6 +13,7 @@ import { loadSvgResources } from '../util/svg.util';
 import { AppRoutingModule } from '../app-routing.module';
 import { ServicesModule } from '../services/services.module';
 
+import '../util/debug.util';
 
 @NgModule({
   imports: [
