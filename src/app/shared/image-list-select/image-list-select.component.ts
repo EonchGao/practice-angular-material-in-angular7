@@ -43,6 +43,7 @@ export class ImageListSelectComponent implements ControlValueAccessor {
     this.propagateChange = fn;
   }
   registerOnTouched(fn: any) { }
+  
   validate(c: FormControl): { [key: string]: any } {
     return this.selected ? null : {
       imageList: {

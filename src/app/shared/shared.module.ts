@@ -19,6 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
@@ -49,6 +50,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,
+    MatButtonToggleModule,
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
@@ -74,10 +76,12 @@ import { AgeInputComponent } from './age-input/age-input.component';
     MatNativeDateModule,
     MatSelectModule,
     MatSidenavModule,
+    MatButtonToggleModule,
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
     ImageListSelectComponent,
+    AgeInputComponent,
   ],
   entryComponents: [
     ConfirmDialogComponent
