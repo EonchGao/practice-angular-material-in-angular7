@@ -5,6 +5,7 @@ import { InviteComponent } from '../invite/invite.component';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { slideToRight } from 'src/app/animation/router.anim';
 import { listAnimation } from 'src/app/animation/list.anim';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -18,26 +19,32 @@ import { listAnimation } from 'src/app/animation/list.anim';
 })
 export class ProjectListComponent implements OnInit {
   @HostBinding('@routerAnim') state;
-  projects = [
-    {
-      id: 1,
-      name: '企业协作平台',
-      desc: '这是一个企业内部项目',
-      coverImg: 'assets/img/covers/0.jpg'
-    },
-    {
-      id: 2,
-      name: '自动化测试项目',
-      desc: '这是一个企业内部项目',
-      coverImg: 'assets/img/covers/1.jpg'
-    }
-  ];
+  // projects = [
+  //   {
+  //     id: 1,
+  //     name: '企业协作平台',
+  //     desc: '这是一个企业内部项目',
+  //     coverImg: 'assets/img/covers/0.jpg'
+  //   },
+  //   {
+  //     id: 2,
+  //     name: '自动化测试项目',
+  //     desc: '这是一个企业内部项目',
+  //     coverImg: 'assets/img/covers/1.jpg'
+  //   }
+  // ];
+  projects;
   constructor(
     private dialog: MatDialog,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private service$: ProjectService,
   ) { }
 
   ngOnInit() {
+    this.service$.get('1').subscribe(projects => {
+      console.log('projects', projects);
+      this.projects = projects;
+    });
   }
   openNewProjectDialog() {
     const dialogRef = this.dialog.open(NewProjectComponent, { data: { title: '新增项目' } });
