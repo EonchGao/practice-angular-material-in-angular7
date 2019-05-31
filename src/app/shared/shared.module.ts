@@ -20,6 +20,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
@@ -54,6 +55,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     DirectiveModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTabsModule,
   ],
   exports: [
     CommonModule,
@@ -82,6 +84,7 @@ import { AgeInputComponent } from './age-input/age-input.component';
     ReactiveFormsModule,
     ImageListSelectComponent,
     AgeInputComponent,
+    MatTabsModule,
   ],
   entryComponents: [
     ConfirmDialogComponent
