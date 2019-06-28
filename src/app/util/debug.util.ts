@@ -5,7 +5,7 @@ import { tap } from 'rxjs/operators';
 
 declare module 'rxjs/internal/Observable' {
     interface Observable<T> {
-        debug: (...any: any[]) => Observable<T>;
+        debug: (...param: any[]) => Observable<T>;
     }
 }
 Observable.prototype.debug = function (message: string) {

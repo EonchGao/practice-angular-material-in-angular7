@@ -1,9 +1,16 @@
 import { Component, Input, forwardRef, OnDestroy, OnInit } from '@angular/core';
+import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NG_VALIDATORS,
+  FormControl,
+  FormBuilder,
+  FormGroup
+} from '@angular/forms';
 
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormBuilder, FormGroup } from '@angular/forms';
 import { map, filter, startWith, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { combineLatest, merge } from 'rxjs';
-import { Observable, Subscription } from 'rxjs';
+import { combineLatest, merge, Subscription } from 'rxjs';
+
 import {
   subDays,
   subMonths,
@@ -64,9 +71,9 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
     { value: AgeUnit.Day, label: '天' }
   ];
   form: FormGroup;
-  constructor(
-    private fb: FormBuilder
-  ) { }
+
+  constructor(private fb: FormBuilder) { }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       birthday: ['', this.validateDate],
@@ -97,17 +104,6 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
       debounceTime(this.debounceTime),
       distinctUntilChanged());
 
-    // const age$ = combineLatest(
-    //   ageNum$,
-    //   ageUnit$,
-    //   (_n, _u) => {
-    //     console.log('你是个啥_n', _n);
-    //     console.log('你是个啥_U', _u);
-    //     return this.toDate({ age: _n, unit: _u });
-    //   }).pipe(
-    //     map(d => { return { date: d, from: 'age' } }),
-    //     filter(_ => this.form.get('age').valid));
-
     const age$ = combineLatest(
       ageNum$,
       ageUnit$,
@@ -116,8 +112,8 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
         return this.toDate({ age: d[0], unit: d[1] });
       }),
       map(d => {
-        console.log('你是个啥：：',d)
-        return { date: d, from: 'age' }
+        console.log('你是个啥：：', d);
+        return { date: d, from: 'age' };
       }),
       filter(_ => this.form.get('age').valid)
     );
@@ -144,13 +140,12 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
 
         }
       }
-    })
+    });
   }
   ngOnDestroy() {
     if (this.sub) {
       this.sub.unsubscribe();
     }
-
   }
 
   private propagateChange = (_: any) => { };
@@ -174,10 +169,13 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
       birthdayInvalid: true
     };
   }
+
   validateAge(ageNumKey: string, ageUnitKey: string) {
+
     return (group: FormGroup): { [key: string]: any } => {
       const ageNum = group.controls[ageNumKey];
       const ageUnit = group.controls[ageUnitKey];
+
       let result = false;
       const ageNumVal = ageNum.value;
       switch (ageUnit.value) {
@@ -186,8 +184,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
           break;
         }
         case AgeUnit.Month: {
-          result = ageNumVal >= this.monthsBottom && ageNumVal < this.monthsTop
-            ;
+          result = ageNumVal >= this.monthsBottom && ageNumVal < this.monthsTop;
           break;
         }
         case AgeUnit.Day: {
@@ -199,7 +196,8 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
         }
       }
       return result ? null : { ageInvalid: true };
-    }
+    };
+
   }
 
   writeValue(obj: any) {
