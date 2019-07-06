@@ -1,7 +1,7 @@
 {
-  "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+  "types": ["fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
   "scope": {
-    "required": true,
+    "required": flase,
     "allowed": ["*"],
     "validate": false,
     "multiple": false
@@ -10,6 +10,6 @@
   "maxSubjectLength": 100,
   "subjectPattern": ".+",
   "subjectPatternErrorMsg": "subject does not match subject pattern!",
-  "helpMessage": "",
+  "helpMessage": "请检查message格式（格式规范：请查看https:xxxxxx）",
   "autoFix": false
 }
