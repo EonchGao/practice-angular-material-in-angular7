@@ -62,7 +62,7 @@
   "license": "ISC",
   "config": {
     "ghooks": {
-      "commit-msg": "./validate-commit-msg.js"
+      "commit-msg": "validate-commit-msg"
     }
   }
 }
