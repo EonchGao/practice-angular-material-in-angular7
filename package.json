@@ -6,7 +6,7 @@
     "start": "ng serve --open",
     "jsonserver": "json-server --watch ./mock/data.json",
     "build": "ng build",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -61,6 +61,21 @@
   "author": "",
   "license": "ISC",
   "config": {
+    "validate-commit-msg": {
+      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+      "scope": {
+        "required": false,
+        "allowed": ["*"],
+        "validate": false,
+        "multiple": false
+      },
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": "",
+      "autoFix": false
+    },
     "ghooks": {
       "commit-msg": "validate-commit-msg"
     }
