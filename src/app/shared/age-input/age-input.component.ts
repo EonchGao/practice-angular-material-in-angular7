@@ -160,7 +160,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
     }
     return {
       dateOfBirthInvalid: true
-    }
+    };
   }
 
   validateDate(c: FormControl): { [key: string]: any } {

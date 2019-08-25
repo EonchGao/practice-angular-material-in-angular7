@@ -1,0 +1,18 @@
+<div [formGroup]="form" class="full-width">
+  <span>{{label}}</span>
+  <mat-chip-list>
+    <mat-chip sellected="true" color="primary" *ngFor="let member of items">
+      {{member.name}}
+      <span class="remove-tag" (click)="removeMenber(member)">X</span>
+    </mat-chip>
+  </mat-chip-list>
+  <mat-form-field *ngIf="displayInput" class="full-width">
+    <input type="text" matInput placeholder="placeholderText" [matAutoComplete]="autoMember"
+      formControlName="memberSearch">
+  </mat-form-field>
+</div>
+<mat-autocomplete #autoMenber="matAutoComplete" [displayWith]="displayUser">
+  <mat-option *ngFor="let item of memberResults$|async" [value]="item" (onSelectionChange)="handleMemberSelection(item)">
+    {{item.name}}
+  </mat-option>
+</mat-autocomplete>

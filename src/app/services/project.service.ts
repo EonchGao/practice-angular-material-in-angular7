@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Project } from '../domain';
 import { map, mergeMap, count, switchMap, mapTo } from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
-
 @Injectable()
 export class ProjectService {
     private readonly domain = 'projects';
@@ -36,7 +35,7 @@ export class ProjectService {
     }
     // delete
     del(project: Project): Observable<Project> {
-        const delTasks$ = from(project.taskLists).pipe(
+        const delTasks$ = from(project.taskLists ? project.taskLists : []).pipe(
             mergeMap(listId => this.http.delete(`${this.config.uri}/taskLists/${listId}`)),
             count()
         );

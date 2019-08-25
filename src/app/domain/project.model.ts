@@ -4,5 +4,5 @@ export interface Project {
     desc?: string;
     coverImg: string;
     taskLists?: string[]; // 列表id
-    memnbers?: string[]; // 成员id
+    members?: string[]; // 成员id
 }
