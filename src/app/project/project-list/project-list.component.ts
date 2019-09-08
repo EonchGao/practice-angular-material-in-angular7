@@ -67,7 +67,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       });
   }
   launchInviateDialog() {
-    const dialogRef = this.dialog.open(InviteComponent);
+    const dialogRef = this.dialog.open(InviteComponent, { data: { members: [] } });
     dialogRef.afterClosed().subscribe(result => console.log('result::', result));
   }
   launchUpdateDialog(project: Project) {

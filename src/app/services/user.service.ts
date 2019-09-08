@@ -53,9 +53,9 @@ export class UserService {
     const memberIds = project.members ? project.members : [];
     return from(memberIds).pipe(
       switchMap(id => {
-      const uri = `${this.config.uri}/${this.domain}/${id}`;
-      return this.http.get(uri).pipe(map(res => res as User));
-    }),
+        const uri = `${this.config.uri}/${this.domain}/${id}`;
+        return this.http.get(uri).pipe(map(res => res as User));
+      }),
       filter(user => user.projectIds.indexOf(projectId) === -1),
       switchMap(u => this.addProjectRef(u, projectId)),
       reduce((arr: any, curr: any) => [...arr, curr], [])

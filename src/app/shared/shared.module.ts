@@ -19,8 +19,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { DirectiveModule } from '../directive/directive.module';
@@ -57,6 +58,7 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
+    MatChipsModule,
   ],
   exports: [
     CommonModule,
@@ -86,9 +88,11 @@ import { ChipsListComponent } from './chips-list/chips-list.component';
     ImageListSelectComponent,
     AgeInputComponent,
     MatTabsModule,
+    MatChipsModule,
+    ChipsListComponent,
   ],
   entryComponents: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
   ]
 })
 export class SharedModule { }
