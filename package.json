@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
-    "jsonserver": "json-server --watch ./mock/data.json",
+    "jsonserver": "json-server --port 3001 --watch ./mock/data.json",
     "build": "ng build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
     "test": "ng test",
@@ -30,7 +30,7 @@
     "json-server": "^0.15.0",
     "lodash": "^4.17.15",
     "rxjs": "~6.3.3",
-    "tslib": "^1.9.0",
+    "tslib": "^1.11.1",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

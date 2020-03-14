@@ -25,13 +25,13 @@ export class RegisterComponent implements OnInit {
       password: ['', Validators.required],
       repeat: [],
       avatar: [img],
-      dateOfBirth: ['1990-01-01']
-    })
+      dateOfBirth: ['1995-02-03']
+    });
   }
   onSubmit({ value, valid }, ev: Event) {
     ev.preventDefault();
     if (!valid) { return; }
-    console.log(value)
+    console.log(value);
   }
 
 }

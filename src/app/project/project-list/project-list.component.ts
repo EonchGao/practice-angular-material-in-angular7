@@ -25,7 +25,7 @@ import { Subscription } from 'rxjs';
 export class ProjectListComponent implements OnInit, OnDestroy {
   @HostBinding('@routerAnim') state;
 
-  projects;
+  projects: Array<Project> = [];
   sub: Subscription;
   constructor(
     private dialog: MatDialog,
@@ -34,7 +34,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.service$.get('1').subscribe(projects => {
+    this.sub = this.service$.get('37489e0c-df34-c261-71c4-ce75357e3035').subscribe(projects => {
       console.log('projects', projects);
       this.projects = projects;
       this.cd.markForCheck();
@@ -61,7 +61,8 @@ export class ProjectListComponent implements OnInit, OnDestroy {
       filter(n => n),
       map(val => ({ ...val, coverImg: this.buildImgSrc(val.coverImg) })),
       switchMap(v => this.service$.add(v)))
-      .subscribe(project => {
+      .subscribe((project: Project) => {
+
         this.projects = [...this.projects, project];
         this.cd.markForCheck();
       });
@@ -85,6 +86,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
         this.cd.markForCheck();
       });
   }
+
   launchConfirmDialog(project: any) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, { data: { title: '删除项目', content: '确认删除该项目吗？' } });
     dialogRef.afterClosed().pipe(

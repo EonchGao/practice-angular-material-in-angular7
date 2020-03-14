@@ -8,6 +8,7 @@ declare module 'rxjs/internal/Observable' {
         debug: (...param: any[]) => Observable<T>;
     }
 }
+
 Observable.prototype.debug = function (message: string) {
     return this.pipe(tap(
         (next) => {
@@ -22,8 +23,8 @@ Observable.prototype.debug = function (message: string) {
         },
         () => {
             if (!environment.production) {
-                console.log('conpleted');
+                console.log('completed');
             }
         }
-    ))
+    ));
 };

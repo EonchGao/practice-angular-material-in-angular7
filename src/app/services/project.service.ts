@@ -13,6 +13,7 @@ export class ProjectService {
         @Inject('BASE_CONFIG') private config,
         private http: HttpClient,
     ) { }
+
     // post
     add(project: Project): Observable<Project> {
         project.id = null;

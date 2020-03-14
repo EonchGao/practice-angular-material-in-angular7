@@ -25,7 +25,7 @@ import {
   isFuture,
   isDate
 } from 'date-fns';
-import { isVaildDate } from 'src/app/util/date.until';
+import { isValidDate } from 'src/app/util/date.until';
 
 export enum AgeUnit {
   Year = 0,
@@ -109,11 +109,8 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
       ageUnit$,
     ).pipe(
       map(d => {
-        return this.toDate({ age: d[0], unit: d[1] });
-      }),
-      map(d => {
-        console.log('你是个啥：：', d);
-        return { date: d, from: 'age' };
+        const date = this.toDate({ age: d[0], unit: d[1] });
+        return { date, from: 'age' };
       }),
       filter(_ => this.form.get('age').valid)
     );
@@ -133,11 +130,10 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
         }
         this.propagateChange(d.date);
       } else {
-        const ageToCompare = this.toAge(birthday.value)
+        const ageToCompare = this.toAge(birthday.value);
         if (age.age !== ageToCompare.age || age.unit !== ageToCompare.unit) {
           birthday.patchValue(d.date, { emitEvent: false });
           this.propagateChange(d.date);
-
         }
       }
     });
@@ -155,7 +151,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
     if (!val) {
       return null;
     }
-    if (isVaildDate(val)) {
+    if (isValidDate(val)) {
       return null;
     }
     return {
@@ -165,7 +161,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
 
   validateDate(c: FormControl): { [key: string]: any } {
     const val = c.value;
-    return isVaildDate(val) ? null : {
+    return isValidDate(val) ? null : {
       birthdayInvalid: true
     };
   }
@@ -227,6 +223,7 @@ export class AgeInputComponent implements ControlValueAccessor, OnDestroy, OnIni
           unit: AgeUnit.Year
         };
   }
+
   toDate(age: Age): string {
     const now = Date.now();
     switch (age.unit) {
