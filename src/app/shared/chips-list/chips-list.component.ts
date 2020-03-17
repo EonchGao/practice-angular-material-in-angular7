@@ -52,7 +52,9 @@ export class ChipsListComponent implements OnInit, ControlValueAccessor {
       filter(s => s && s.length > 1),
       switchMap(str => this.service.searchUsers(str)));
   }
+
   private propagateChange = (_: any) => { };
+
   writeValue(obj: User[]) {
     if (obj && this.multiple) {
       const userEntities = obj.reduce((e, c) => ({ ...e, c }), {});
@@ -64,15 +66,19 @@ export class ChipsListComponent implements OnInit, ControlValueAccessor {
       this.items = [...obj];
     }
   }
+
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
+
   registerOnTouched(fn: any): void { }
+
   validate(c: FormControl): { [key: string]: any } {
     return this.items ? null : {
       chipListInvalid: true
     };
   }
+
   removeMember(member: User) {
     const ids = this.items.map(item => item.id);
     const i = ids.indexOf(member.id);
@@ -84,6 +90,7 @@ export class ChipsListComponent implements OnInit, ControlValueAccessor {
     this.form.patchValue({ memberSearch: '' });
     this.propagateChange(this.items);
   }
+
   handleMemberSelection(member: User) {
     if (this.items.map(item => item.id).indexOf(member.id) !== -1) {
       return;
@@ -92,9 +99,11 @@ export class ChipsListComponent implements OnInit, ControlValueAccessor {
     this.form.patchValue({ memberSearch: member.name });
     this.propagateChange(this.items);
   }
+
   displayUser(user: User): string {
     return user ? user.name : '';
   }
+
   get displayInput() {
     return this.multiple || this.items.length === 0;
   }
