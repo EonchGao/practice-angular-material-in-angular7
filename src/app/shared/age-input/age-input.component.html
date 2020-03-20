@@ -8,9 +8,10 @@
     <mat-datepicker touchUi="true" #birthPicker></mat-datepicker>
   </div>
   <ng-container formGroupName="age">
-    <div class="age-num">
-      <mat-form-field><input type="number" placeholder="年龄" matInput formControlName="ageNum"></mat-form-field>
-    </div>
+    <mat-form-field class="age-num">
+      <input type=" number" placeholder="年龄" matInput formControlName="ageNum">
+    </mat-form-field>
+
     <div>
       <mat-button-toggle-group formControlName="ageUnit">
         <mat-button-toggle *ngFor="let unit of ageUnits" [value]="unit.value">

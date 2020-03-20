@@ -1,5 +1,5 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form,$event)">
-  <mat-card>
+  <mat-card class="card">
     <mat-tab-group>
       <mat-tab label="账号信息">
         <mat-card-header>
@@ -21,26 +21,36 @@
           <app-image-list-select formControlName="avatar" [useSvgIcon]="true" [items]="items" [cols]="6"
             [title]="'选择头像：'">
           </app-image-list-select>
-          <button mat-raised-button type="submit" color="primary">注册</button>
         </mat-card-content>
         <mat-card-actions class="text-right">
-          <p>还没有账户?<a href="">登录</a></p>
-          <p>忘记密码?<a href="">找回</a></p>
+          <button mat-raised-button type="button" color="primary">下一步</button>
+          <span class="fill-remaining-space"></span>
+          <span>
+            <span>已有账户？ <a routerLink="/login">登录</a></span>
+            <span>忘记 <a routerLink="/forgot">密码？</a></span>
+          </span>
         </mat-card-actions>
       </mat-tab>
       <mat-tab label="个人信息">
-        <div class="full-width">
-          <!-- <app-identity-input formControlName="identity"></app-identity-input> -->
-        </div>
-        <div class="full-width">
+
+        <app-identity-input formControlName="identity" class="full-width control-padding"></app-identity-input>
+
+        <div class="full-width control-padding">
           <app-age-input formControlName="dateOfBirth"></app-age-input>
         </div>
+        <div class="full-width control-padding">
+          <app-area-list formControlName="address"></app-area-list>
+        </div>
         <div class="full-width">
-          <!-- <app-area-list formControlName="address"></app-area-list> -->
+          <button mat-raised-button type="button">上一步</button>
+          <button mat-raised-button type="submit" [disabled]="!form.valid">注册</button>
+          <span class="fill-remaining-space"></span>
+          <span>
+            <span>已有账户？ <a routerLink="/login">登录</a></span>
+            <span>忘记 <a routerLink="/forgot">密码？</a></span>
+          </span>
         </div>
       </mat-tab>
     </mat-tab-group>
-
-
   </mat-card>
 </form>

@@ -33,7 +33,14 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
 import { AreaListComponent } from './area-list/area-list.component';
 
 @NgModule({
-  declarations: [ConfirmDialogComponent, ImageListSelectComponent, AgeInputComponent, ChipsListComponent, IdentityInputComponent, AreaListComponent],
+  declarations: [
+    ConfirmDialogComponent,
+    ImageListSelectComponent,
+    AgeInputComponent,
+    ChipsListComponent,
+    IdentityInputComponent,
+    AreaListComponent
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
@@ -92,6 +99,8 @@ import { AreaListComponent } from './area-list/area-list.component';
     MatTabsModule,
     MatChipsModule,
     ChipsListComponent,
+    IdentityInputComponent,
+    AreaListComponent
   ],
   entryComponents: [
     ConfirmDialogComponent,
